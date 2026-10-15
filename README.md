@@ -31,6 +31,26 @@ python3 teklif.py ~/mutfak/teklifler.json --izin-ucreti 350
 Çıktılar `~/mutfak/` altına yazılır (`--cikti` ile değiştirin):
 `ozet-v2.md`, `elektrikci-adaylar-v2.csv`, `teklif-karsilastirma.md`.
 
+## Nasıl çalışır
+
+```mermaid
+flowchart TD
+    A[Seattle Open Data<br/>Building Permits c4tj-daue] --> B[ADIM 1<br/>permitclassmapped değerlerini sorgula<br/>konut sınıfını seç]
+    A --> C[ADIM 2<br/>sokak + ZIP + kapı no →<br/>izin kayıtlarından lat/lon]
+    B --> D[ADIM 3<br/>within_circle 3200 m<br/>konut + son 2 yıl + müteahhit dolu]
+    C --> D
+    D -->|15 firmadan az| D2[yarıçap 8000 m] --> E
+    D --> E[ADIM 6<br/>firma adı tekilleştirme<br/>Cochran Inc. = Cochran, Inc]
+    E --> F[ADIM 4<br/>izin sayısı, medyan, ortalama<br/>3k–25k bandı]
+    F --> G{ADIM 5 eleme}
+    G -->|ortalama > 200k| X1[Elendi: ticari ölçek]
+    G -->|fire / security / solar / ...| X2[Elendi: low-voltage]
+    G -->|kalan| H[ozet-v2.md + elektrikci-adaylar-v2.csv]
+    H --> I[telefon + yazılı teklif]
+    I --> J[teklifler.json] --> K[teklif.py<br/>⚠ eksikler, taban eşitleme,<br/>risk puanı, kırmızı bayraklar]
+    K --> L[teklif-karsilastirma.md]
+```
+
 ## Araçlar
 
 | dosya | ne yapar |
