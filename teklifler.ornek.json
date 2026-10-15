@@ -1,0 +1,20 @@
+[
+  {
+    "firma": "ÖRNEK FİRMA (silin, kendi tekliflerinizi girin)",
+    "lisans_no": null,
+    "seattle_lisansi": null,
+    "izni_kim_cekiyor": "müteahhit",
+    "toplam_fiyat": 4800,
+    "fiyat_tipi": "sabit",
+    "izin_ucreti_dahil": false,
+    "cover_inspection_tarihi": null,
+    "tahmini_sure_gun": 3,
+    "re_inspection_ucretini_kim_oder": null,
+    "sigorta_bond": true,
+    "garanti_suresi": "1 yıl",
+    "yazili_teklif": true,
+    "pesin_yuzde": 30,
+    "saat_ucreti": null,
+    "tahmini_saat": null
+  }
+]
